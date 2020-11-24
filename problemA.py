@@ -7,6 +7,6 @@ def pressuresurgecalc():
         csv_reader = csv.reader(PipeData)
 
         for row in csv_reader:
-            if nps == row:
+            if nps == row[0]:
                 Do = row[1]
     
