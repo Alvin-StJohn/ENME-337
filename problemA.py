@@ -108,7 +108,7 @@ def part2numbers(values):
 
     '''
     if wall == 'thin-wall':
-    
+        
     else:
     '''
 
