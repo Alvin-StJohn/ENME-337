@@ -1,6 +1,7 @@
 import csv
 import matplotlib.pyplot as plt
 import statistics as st
+import numpy as np
 import math as m
 B = 5
 W = 30
@@ -45,12 +46,17 @@ delk = []
 for i in aav:
     calc = (((m.pow(10,-6))*(6.14-0.089)*(m.sqrt(i)))/(B*W))*(30.96-(195.8*(i/W))+(730.6*m.pow(i/W,2))-(1186.3*m.pow(i/W,3))+(754.6*m.pow(i/W,4)))
     delk.append(calc)
-
-plt.plot(delk,sec)
+plt.figure()
+x = np.array(np.log(delk))
+y = np.array(np.log(sec))
+plt.scatter(x,y)
 plt.title("fatigue crack growth rate as a function of delta K")
 plt.xlabel("log of delta K")
 plt.ylabel("log of da/dN")
-plt.xscale('log')
-plt.yscale('log')
+m, b = np.polyfit(x,y,1)
+plt.plot(x, m*x + b)
 plt.show()
+
+A = b
+n = m
 
