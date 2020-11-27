@@ -59,20 +59,61 @@ def part2numbers(values):
 
     Ygraphfile = open("YGraphData.csv", "r")
     Ygraphdata = csv.reader(Ygraphfile)
-    rows = list(Ygraphdata)
+    header = next(Ygraphdata)
 
     c = b/2
     line = a/c
     x = a/values[2]
 
-    if abs(line - 1) <= 0.1 or line > 1:
+    if line >= 0.9:
         x = x
+        line1 = 1.0
+        x1 = 10
+        y2 = 11
     elif line < 0.9 and line >= 0.6:
         x = x**4
+        line1 = 0.8
+        x1 = 8
+        y2 = 9
     elif line < 0.6 and line > 0.3:
         x = x**3
-    else:
+        line1 = 0.4
+        x1 = 6
+        y2 = 7
+    elif line <= 0.3 and line > 0.15:
         x = x**4
+        line1 = 0.2
+        x1 = 4
+        y2 = 5
+    elif line <= 0.15 and line > 0.14:
+        x=x**4
+        line1 = 0.1
+        x1 = 2
+        y1 = 3
+    else:
+        x=x**4
+        line1 = 0.02
+        x1 = 0
+        y1 = 1
+
+    xvalues = []
+    yvalues = []
+    for rows in Ygraphdata:
+        xvalues.append(rows[x1])
+        yvalues.append(rows[y1])
+    
+    for i in range(xvalues):
+        if xvalues[i] == x:
+            Y = yvalues[i]
+
+    '''
+    if wall == 'thin-wall':
+    
+    else:
+    '''
+
+
+
 
     
 
